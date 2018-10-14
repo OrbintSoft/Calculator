@@ -22,5 +22,24 @@ namespace Calculator.Tests
             Math.Round(expression.GetResult("2l3"),6).Should().Be(Math.Round(Math.Log(2d,3d),6)); //round because double precision limit
         }
 
+        [Fact]
+        public void TestsBrakets()
+        {
+            ExpressionCalculator expression = new ExpressionCalculator();
+            expression.GetResult("((2+3)*(6+5))/2").Should().Be(((2d + 3d) * (6d + 5d)) / 2d);
+        }
+
+        [Fact]
+        public void TestOperatorsOrder()
+        {
+            ExpressionCalculator expression = new ExpressionCalculator();
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+8-7*6/(5^4r3l2)"));
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+8-7*6/((5^4)r3l2)"));
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+8-7*6/(((5^4)r3)l2)"));
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+8-7*(6/(((5^4)r3)l2))"));
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+8-(7*(6/(((5^4)r3)l2)))"));
+            expression.GetResult("9+8-7*6/5^4r3l2").Should().Be(expression.GetResult("9+(8-(7*(6/(((5^4)r3)l2))))"));
+        }
+
     }
 }
