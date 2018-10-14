@@ -22,13 +22,16 @@ namespace Calculator
         /// </summary>
         public static void Init()
         {
-            var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
-            if (!supportedCultures.Contains(currentCulture))
+            if (!initialized)
             {
-                CultureInfo.CurrentCulture = new CultureInfo(DEFAULT_CULTURE);
-            }
-            rsManager = new ResourceManager("Calculator.Resources.Generic", Assembly.GetExecutingAssembly());
-            initialized = true;
+                var currentCulture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                if (!supportedCultures.Contains(currentCulture))
+                {
+                    CultureInfo.CurrentCulture = new CultureInfo(DEFAULT_CULTURE);
+                }
+                rsManager = new ResourceManager("Calculator.Resources.Generic", Assembly.GetExecutingAssembly());
+                initialized = true;
+            }            
         }
 
         /// <summary>

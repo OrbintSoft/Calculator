@@ -2,7 +2,9 @@
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Calculator.Tests")]
 namespace Calculator
 {
     /// <summary>
@@ -18,7 +20,7 @@ namespace Calculator
         /// 0: The program has been executed with success
         /// -1: an Error has occurred
         /// </returns>
-        private static int Main(string[] args)
+        internal static int Main(string[] args)
         {
             try
             {
@@ -37,7 +39,7 @@ namespace Calculator
         /// Execute the right command in base of provided arguments
         /// </summary>
         /// <param name="args">Commands to be executed</param>
-        private static void ExecuteCommand(string[] args)
+        internal static void ExecuteCommand(string[] args)
         {
             if (args.Length > 0)
             {

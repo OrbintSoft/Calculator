@@ -36,7 +36,7 @@ namespace Calculator
             else if (num1 == "") return num2;
             else if (num2 == "") return num1;
             else
-                return (Convert.ToString(Math.Exp(Math.Log(Convert.ToDouble(num1, CultureInfo.InvariantCulture), Convert.ToDouble(num2, CultureInfo.InvariantCulture))), CultureInfo.InvariantCulture));
+                return (Convert.ToString(Math.Log(Convert.ToDouble(num1, CultureInfo.InvariantCulture), Convert.ToDouble(num2, CultureInfo.InvariantCulture)), CultureInfo.InvariantCulture));
         }
 
         private string Root(string num1, string num2)
