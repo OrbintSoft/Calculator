@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+/.localhistory
+/Backup
+/packaging
+/.vs/Calculator/DesignTimeBuild/*.dtbcache
+/.vs/Calculator/v15/*.suo
+/.vs
+/UpgradeLog.htm
